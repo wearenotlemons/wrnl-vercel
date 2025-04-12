@@ -39,6 +39,9 @@
       border-radius: 10px;
       background-color: #f9f9f9;
     }
+    .result p {
+      margin: 0.5em 0;
+    }
     .header-image {
       width: 100%;
       height: auto;
@@ -62,9 +65,9 @@
       text-decoration: underline;
     }
     @media (max-width: 1000px) {
-      body { font-size: 20px; }
-      h2 { font-size: 30px; }
-      input, button { font-size: 20px; }
+      body { font-size: 18px; }
+      h2 { font-size: 28px; }
+      input, button { font-size: 18px; }
       footer { flex-direction: column; text-align: center; gap: 8px; }
     }
   </style>
@@ -84,22 +87,22 @@
     {% if name or msg %}
       <div class="result" id="result" style="display: block;">
         {% if name %}
-          <strong>{{ name }}</strong><br>
+          <p><strong>{{ name }}</strong></p>
         {% endif %}
 
         {% if sessions %}
-          Attended session(s): {{ sessions }}<br>
+          <p>Attended session(s): {{ sessions }}</p>
         {% endif %}
 
         {% if totalHours %}
-        Total VIA hours: <strong>{{ totalHours }} hour(s).</strong><br>
-        <small>
-          For Session 11, 1 VIA hour is awarded. For subsequent sessions, 2 VIA hours are awarded per session. 
-        </small>
+          <p>Total VIA hours: <strong>{{ totalHours }} hour(s).</strong><br></p>
+          <small>
+            <p>For Session 11, 1 VIA hour is awarded. For subsequent sessions, 2 VIA hours are awarded per session.</p> 
+          </small>
         {% endif %}
 
         {% if msg %}
-          {{ msg }}
+          <p>{{ msg }}</p>
         {% endif %}
       </div>
     {% endif %}
