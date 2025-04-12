@@ -86,10 +86,6 @@
         {% if name %}
           <strong>{{ name }}</strong><br>
         {% endif %}
-        
-        {% if msg %}
-          {{ msg }}
-        {% endif %}
 
         {% if sessions %}
           Attended session(s): {{ sessions }}<br>
@@ -97,6 +93,14 @@
 
         {% if totalHours %}
         Total VIA hours: <strong>{{ totalHours }} hour(s).</strong>
+        <small>
+          For Session 11, 1 VIA hour is awarded. <br>
+          2 VIA hours are awarded for following sessions 
+        </small>
+        {% endif %}
+
+        {% if msg %}
+          {{ msg }}
         {% endif %}
       </div>
     {% endif %}
