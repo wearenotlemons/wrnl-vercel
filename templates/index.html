@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WRNL Attendance Portal</title>
+  <link rel="icon" href="https://github.com/wearenotlemons/wearenotlemons/blob/main/assets/Lemons%20Logo.jpg?raw=true" type="image/x-icon">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h2 { font-size: 24px; }
+    input, button {
+      font-size: 16px;
+      padding: 12px;
+      margin: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: AliceBlue;
+      color: black;
+    }
+    button.loading {
+      color: grey;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    .header-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      padding: 20px;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      color: #555;
+    }
+    footer a {
+      text-decoration: none;
+      color: #555;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 1000px) {
+      body { font-size: 20px; }
+      h2 { font-size: 30px; }
+      input, button { font-size: 20px; }
+      footer { flex-direction: column; text-align: center; gap: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://github.com/wearenotlemons/wearenotlemons/blob/main/assets/WRNL%20Header.jpg?raw=true" alt="We Are Not Lemons" class="header-image">
+    <h2>NYJC We Are Not Lemons (WRNL) Volunteer Attendance</h2>
+    <p>Portal for NYJCians to check their attendance for WRNL sessions</p>
+    
+    <form method="post" onsubmit="return setLoading()">
+      <input type="text" id="nameInput" name="nameInput" placeholder="Enter your full name" required />
+      <button type="submit" id="submitButton"><strong>View attendance</strong></button>
+    </form>
+    
+    {% if name or msg %}
+      <div class="result" id="result" style="display: block;">
+        {% if name %}
+          <strong>{{ name }}</strong><br>
+        {% endif %}
+        
+        {% if msg %}
+          {{ msg }}
+        {% endif %}
+
+        {% if sessions %}
+          Attended session(s): {{ sessions }}<br>
+        {% endif %}
+
+        {% if totalHours %}
+        Total VIA hours: <strong>{{ totalHours }} hour(s).</strong>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <footer>
+      <span>© NYJC We Are Not Lemons 2025</span>
+      <a href="https://www.instagram.com/arewelemons" target="_blank">IG: @arewelemons</a>
+    </footer>
+  </div>
+
+
+  <script>
+    function setLoading() {
+      const button = document.getElementById('submitButton');
+      button.innerText = "Loading...";
+      button.classList.add('loading');
+      button.disabled = true;
+      return true; // allow form to submit
+    }
+  </script>
+</body>
+</html>
