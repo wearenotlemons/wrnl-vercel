@@ -84,22 +84,22 @@
     {% if name or msg %}
       <div class="result" id="result" style="display: block;">
         {% if name %}
-          <strong>{{ name }}</strong><br>
+          <p><strong>{{ name }}</strong></p>
         {% endif %}
 
         {% if sessions %}
-          Attended session(s): {{ sessions }}<br>
+          <p>Attended session(s): {{ sessions }}</p>
         {% endif %}
 
         {% if totalHours %}
-        Total VIA hours: <strong>{{ totalHours }} hour(s).</strong><br>
-        <small>
-          For Session 11, 1 VIA hour is awarded. For subsequent sessions, 2 VIA hours are awarded per session. 
-        </small>
+          <p>Total VIA hours: <strong>{{ totalHours }} hour(s).</strong><br></p>
+          <small>
+            <p>For Session 11, 1 VIA hour is awarded. For subsequent sessions, 2 VIA hours are awarded per session.</p> 
+          </small>
         {% endif %}
 
         {% if msg %}
-          {{ msg }}
+          <p>{{ msg }}</p>
         {% endif %}
       </div>
     {% endif %}
