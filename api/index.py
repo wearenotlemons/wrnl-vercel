@@ -21,10 +21,11 @@ def handle():
         name = data.get("name")
         sessions = ", ".join(map(str, data.get("sessions", [])))
         totalHours = data.get("totalHours")
+        remarks = data.get("remarks")
         if totalHours > 0:
-            return render_template("index.html", name=name, sessions=sessions, totalHours=totalHours)
+            return render_template("index.html", name=name, sessions=sessions, totalHours=totalHours,remarks=remarks)
         else:
-            return render_template("index.html", name=name, msg="You did not attend any sessions.")
+            return render_template("index.html", name=name, msg="You did not attend any sessions.",remarks=remarks)
     else:
         return render_template("index.html", msg="Failed to retrieve data. Please try again.")
 
