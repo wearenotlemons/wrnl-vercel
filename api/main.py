@@ -9,8 +9,13 @@ SCRIPT_URL = os.environ.get("SCRIPT_URL")
 
 @app.route("/", methods=["GET", "POST"])
 def handle():
+
+    # Get comments from comments.txt
+    with open("comments.txt","r") as f:
+        comments = f.read()
+
     if request.method == "GET":
-        return render_template("index.html")
+        return render_template("index.html",comments=comments)
 
     name = request.form.get("nameInput")
     if not name:
