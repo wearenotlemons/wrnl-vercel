@@ -11,8 +11,8 @@ SCRIPT_URL = os.environ.get("SCRIPT_URL")
 def handle():
 
     # Get comments from comments.txt
-    with open("comments.txt","r") as f:
-        comments = f.read()
+    with open("comments.txt", "r") as f:
+        comments = "<br>".join(f.read().splitlines())
 
     if request.method == "GET":
         return render_template("index.html",comments=comments)
