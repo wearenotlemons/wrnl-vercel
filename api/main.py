@@ -12,7 +12,7 @@ def handle():
 
     # Get comments from comments.txt
     with open("comments.txt", "r") as f:
-        comments = f.readline()
+        comments = f.readline() # Only takes first line of comments.txt
 
     if request.method == "GET":
         return render_template("index.html")
