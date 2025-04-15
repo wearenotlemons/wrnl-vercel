@@ -78,7 +78,6 @@
     <img src="https://github.com/wearenotlemons/wearenotlemons.github.io/blob/main/assets/WRNL%20Header.jpg?raw=true" alt="We Are Not Lemons" class="header-image">
     <h2>NYJC We Are Not Lemons (WRNL) Volunteer Attendance</h2>
     <p>Portal for NYJCians to view their attendance for WRNL sessions</p>
-    <p><pre>{{comments}}</pre></p>
     
     <form method="post" onsubmit="return setLoading()">
       <input type="text" id="nameInput" name="nameInput" placeholder="Enter your full name" required />
@@ -98,7 +97,7 @@
         {% if totalHours %}
           <p>Total VIA hours: <strong>{{ totalHours }} hour(s).</strong><br></p>
           <small>
-            <p>For Session 11, 1 VIA hour is awarded. For subsequent sessions, 2 VIA hours are awarded per session.</p> 
+            <p>{{comments}}</p> 
           </small>
         {% endif %}
 

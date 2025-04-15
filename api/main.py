@@ -12,10 +12,10 @@ def handle():
 
     # Get comments from comments.txt
     with open("comments.txt", "r") as f:
-        comments = "<br> ".join(f.read().splitlines())
+        comments = f.readline()
 
     if request.method == "GET":
-        return render_template("index.html",comments=comments)
+        return render_template("index.html")
 
     name = request.form.get("nameInput")
     if not name:
@@ -28,9 +28,9 @@ def handle():
         totalHours = data.get("totalHours")
         remarks = data.get("remarks")
         if totalHours > 0:
-            return render_template("index.html", name=name, sessions=sessions, totalHours=totalHours,remarks=remarks)
+            return render_template("index.html", name=name, comments=comments, sessions=sessions, totalHours=totalHours, remarks=remarks)
         else:
-            return render_template("index.html", name=name, msg="You did not attend any sessions.",remarks=remarks)
+            return render_template("index.html", name=name, msg="You did not attend any sessions.", remarks=remarks)
     else:
         return render_template("index.html", msg="Failed to retrieve data. Please try again.")
 
