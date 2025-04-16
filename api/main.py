@@ -9,6 +9,11 @@ SCRIPT_URL = os.environ.get("SCRIPT_URL")
 
 @app.route("/", methods=["GET", "POST"])
 def handle():
+
+    # Get comments from comments.txt
+    with open("comments.txt", "r") as f:
+        comments = f.readline() # Only takes first line of comments.txt
+
     if request.method == "GET":
         return render_template("index.html")
 
@@ -23,9 +28,9 @@ def handle():
         totalHours = data.get("totalHours")
         remarks = data.get("remarks")
         if totalHours > 0:
-            return render_template("index.html", name=name, sessions=sessions, totalHours=totalHours,remarks=remarks)
+            return render_template("index.html", name=name, comments=comments, sessions=sessions, totalHours=totalHours, remarks=remarks)
         else:
-            return render_template("index.html", name=name, msg="You did not attend any sessions.",remarks=remarks)
+            return render_template("index.html", name=name, msg="You did not attend any sessions.", remarks=remarks)
     else:
         return render_template("index.html", msg="Failed to retrieve data. Please try again.")
 
